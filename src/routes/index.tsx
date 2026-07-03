@@ -2,14 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  ChefHat,
-  Shirt,
-  Bed,
-  Briefcase,
-  Tv,
-  WashingMachine,
-  Bath,
-  GalleryVerticalEnd,
   Sparkles,
   MessageCircle,
   MapPin,
@@ -17,15 +9,20 @@ import {
   ShieldCheck,
   Ruler,
   Gem,
-  Package,
   Wrench,
-  Clock,
   HeartHandshake,
+  Factory,
   Menu,
   X,
   Plus,
   Minus,
   ArrowRight,
+  CheckCircle2,
+  Award,
+  MessageSquare,
+  PenTool,
+  Hammer,
+  Truck,
 } from "lucide-react";
 
 import logo from "@/assets/vetta-logo.png";
@@ -38,10 +35,10 @@ import projLaundry from "@/assets/project-laundry.jpg";
 import projBathroom from "@/assets/project-bathroom.jpg";
 import projKitchen2 from "@/assets/project-kitchen2.jpg";
 
-const WHATSAPP_URL = "https://wa.me/5547988271864";
-const WHATSAPP_MSG =
-  "?text=Ol%C3%A1%21+Gostaria+de+solicitar+um+or%C3%A7amento+de+m%C3%B3veis+planejados.";
-const WHATSAPP = `${WHATSAPP_URL}${WHATSAPP_MSG}`;
+const WHATSAPP_PHONE = "5547988271864";
+const WHATSAPP_TEXT =
+  "Olá! Gostaria de solicitar um orçamento de móveis planejados na Vetta Design.";
+const WHATSAPP = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(WHATSAPP_TEXT)}`;
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -98,48 +95,38 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const services = [
-  { icon: ChefHat, title: "Cozinhas Planejadas", desc: "Cozinhas sob medida que unem funcionalidade, organização e um acabamento impecável." },
-  { icon: Shirt, title: "Closets", desc: "Closets planejados com iluminação embutida e divisórias inteligentes para o seu dia a dia." },
-  { icon: Bed, title: "Dormitórios", desc: "Quartos aconchegantes com guarda-roupas, cabeceiras e móveis totalmente integrados." },
-  { icon: Briefcase, title: "Home Office", desc: "Ambientes de trabalho ergonômicos, discretos e sofisticados feitos para o seu ritmo." },
-  { icon: Tv, title: "Painéis para TV", desc: "Painéis de TV com ripados, iluminação indireta e integração com a sala de estar." },
-  { icon: WashingMachine, title: "Lavanderias", desc: "Lavanderias planejadas que otimizam cada centímetro sem abrir mão da elegância." },
-  { icon: Bath, title: "Banheiros", desc: "Gabinetes e armários sob medida em acabamentos resistentes à umidade." },
-  { icon: GalleryVerticalEnd, title: "Cristaleiras", desc: "Peças exclusivas para valorizar louças, adegas e objetos de coleção." },
-  { icon: Sparkles, title: "Móveis Sob Medida", desc: "Projetos exclusivos para qualquer ambiente da sua casa ou empresa." },
+const highlights = [
+  { icon: Star, title: "Nota 5,0 no Google", desc: "Clientes satisfeitos com cada entrega." },
+  { icon: ShieldCheck, title: "Garantia de 4 anos", desc: "Segurança e tranquilidade no seu investimento." },
+  { icon: Ruler, title: "Móveis 100% sob medida", desc: "Projetos únicos, feitos para o seu espaço." },
+  { icon: Award, title: "+50 projetos entregues", desc: "Experiência comprovada em alto padrão." },
 ];
 
 const differentials = [
-  { icon: HeartHandshake, title: "Atendimento personalizado" },
-  { icon: Ruler, title: "Projeto totalmente sob medida" },
-  { icon: Gem, title: "Acabamento de alto padrão" },
-  { icon: Package, title: "Materiais selecionados" },
-  { icon: Wrench, title: "Instalação profissional" },
-  { icon: ShieldCheck, title: "Garantia de 4 anos" },
-  { icon: Clock, title: "Cumprimento de prazos" },
-  { icon: Sparkles, title: "Pós-venda dedicado" },
+  { icon: PenTool, title: "Projeto totalmente personalizado", desc: "Cada detalhe pensado para o seu estilo de vida." },
+  { icon: Factory, title: "Fabricação própria", desc: "Controle total da qualidade, do desenho à entrega." },
+  { icon: Gem, title: "Acabamento de alto padrão", desc: "Materiais selecionados e detalhes impecáveis." },
+  { icon: Wrench, title: "Instalação profissional", desc: "Equipe própria, cuidadosa e pontual." },
+  { icon: HeartHandshake, title: "Atendimento personalizado", desc: "Relacionamento próximo do início ao pós-venda." },
+  { icon: ShieldCheck, title: "Garantia de 4 anos", desc: "Compromisso que vai muito além da entrega." },
 ];
 
 const process = [
-  { n: "01", title: "Contato pelo WhatsApp", desc: "Fale conosco e conte sobre o ambiente que deseja transformar." },
-  { n: "02", title: "Conversa inicial", desc: "Entendemos suas necessidades, estilo e expectativas." },
-  { n: "03", title: "Visita técnica e medidas", desc: "Vamos até você para medir com precisão cada detalhe." },
-  { n: "04", title: "Orçamento", desc: "Enviamos projeto e proposta transparente, sem surpresas." },
-  { n: "05", title: "Produção", desc: "Fabricação com materiais selecionados e acabamento premium." },
-  { n: "06", title: "Instalação", desc: "Equipe própria realiza a montagem com máximo cuidado." },
-  { n: "07", title: "Pós-venda", desc: "Acompanhamos você mesmo depois da entrega." },
+  { icon: MessageSquare, n: "1", title: "Conversamos sobre sua ideia", desc: "Ouvimos você para entender estilo, necessidades e desejos." },
+  { icon: PenTool, n: "2", title: "Desenvolvemos o projeto", desc: "Criamos um projeto exclusivo, com visualização em 3D." },
+  { icon: Hammer, n: "3", title: "Fabricamos com alto padrão", desc: "Marcenaria própria, materiais premium e atenção a cada detalhe." },
+  { icon: Truck, n: "4", title: "Instalamos com cuidado", desc: "Equipe treinada entrega tudo pronto, no prazo combinado." },
 ];
 
-const projects = [
-  { img: heroKitchen, title: "Cozinha verde oliva", cat: "Cozinhas" },
-  { img: projCloset, title: "Closet iluminado", cat: "Closets" },
-  { img: projTv, title: "Painel de TV ripado", cat: "Painéis" },
-  { img: projBedroom, title: "Dormitório integrado", cat: "Dormitórios" },
-  { img: projOffice, title: "Home office sob medida", cat: "Home Office" },
-  { img: projBathroom, title: "Banheiro sofisticado", cat: "Banheiros" },
-  { img: projLaundry, title: "Lavanderia planejada", cat: "Lavanderias" },
-  { img: projKitchen2, title: "Cozinha aberta clara", cat: "Cozinhas" },
+const environments = [
+  { img: heroKitchen, title: "Cozinhas Planejadas", desc: "Funcionalidade e sofisticação em cada centímetro." },
+  { img: projCloset, title: "Closets", desc: "Organização inteligente com iluminação embutida." },
+  { img: projBedroom, title: "Dormitórios", desc: "Ambientes aconchegantes e integrados." },
+  { img: projOffice, title: "Home Office", desc: "Espaço de trabalho ergonômico e elegante." },
+  { img: projTv, title: "Painéis para TV", desc: "Ripados, iluminação indireta e integração perfeita." },
+  { img: projLaundry, title: "Lavanderias", desc: "Cada centímetro otimizado com beleza." },
+  { img: projBathroom, title: "Banheiros", desc: "Gabinetes sob medida em acabamentos premium." },
+  { img: projKitchen2, title: "Cozinhas Abertas", desc: "Integração e luz para o coração da casa." },
 ];
 
 const testimonials = [
@@ -165,14 +152,26 @@ function Landing() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Services />
+        <Highlights />
+        <Environments />
+        <MidCTA
+          title="Gostou de algum ambiente?"
+          desc="Solicite um orçamento personalizado para o seu projeto."
+          button="Quero meu projeto"
+          bg="graphite"
+        />
         <Differentials />
+        <MidCTA
+          title="Vamos transformar seu ambiente em um espaço único?"
+          desc="Fale com um especialista Vetta Design e comece hoje mesmo."
+          button="Falar com um especialista"
+          bg="beige"
+        />
         <Process />
-        <Projects />
         <Testimonials />
-        <CTA />
+        <About />
         <FAQ />
+        <FinalCTA />
       </main>
       <Footer />
       <FloatingWhatsApp />
@@ -180,6 +179,7 @@ function Landing() {
   );
 }
 
+/* ============ NAV ============ */
 function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -190,19 +190,21 @@ function Navbar() {
     return () => window.removeEventListener("scroll", on);
   }, []);
   const links = [
-    { href: "#sobre", label: "Sobre" },
-    { href: "#servicos", label: "Serviços" },
-    { href: "#projetos", label: "Projetos" },
-    { href: "#processo", label: "Processo" },
+    { href: "#ambientes", label: "Ambientes" },
+    { href: "#diferenciais", label: "Diferenciais" },
+    { href: "#processo", label: "Como funciona" },
     { href: "#depoimentos", label: "Depoimentos" },
+    { href: "#sobre", label: "Sobre" },
     { href: "#faq", label: "FAQ" },
   ];
   return (
     <header
       className="fixed top-0 inset-x-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? "color-mix(in oklab, var(--graphite) 92%, transparent)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
+        backgroundColor: scrolled
+          ? "color-mix(in oklab, var(--graphite) 96%, transparent)"
+          : "color-mix(in oklab, var(--graphite) 70%, transparent)",
+        backdropFilter: "blur(14px)",
         borderBottom: scrolled ? "1px solid color-mix(in oklab, var(--beige) 15%, transparent)" : "1px solid transparent",
       }}
     >
@@ -215,14 +217,14 @@ function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium tracking-wide transition-colors"
+              className="text-sm font-medium tracking-wide transition-opacity hover:opacity-80"
               style={{ color: "var(--cream)" }}
             >
               {l.label}
             </a>
           ))}
         </nav>
-        <a href={WHATSAPP} target="_blank" rel="noopener" className="hidden lg:inline-flex btn-whatsapp py-3 px-5 text-sm">
+        <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="hidden lg:inline-flex btn-terracotta py-3 px-5 text-sm">
           <MessageCircle className="w-4 h-4" /> Orçamento
         </a>
         <button
@@ -237,7 +239,7 @@ function Navbar() {
       {open && (
         <div
           className="lg:hidden px-5 pb-6 pt-2"
-          style={{ backgroundColor: "color-mix(in oklab, var(--graphite) 96%, transparent)" }}
+          style={{ backgroundColor: "color-mix(in oklab, var(--graphite) 98%, transparent)" }}
         >
           <div className="flex flex-col gap-4">
             {links.map((l) => (
@@ -251,7 +253,7 @@ function Navbar() {
                 {l.label}
               </a>
             ))}
-            <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-whatsapp mt-2">
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-terracotta mt-2">
               <MessageCircle className="w-4 h-4" /> Solicitar orçamento
             </a>
           </div>
@@ -261,22 +263,23 @@ function Navbar() {
   );
 }
 
+/* ============ HERO ============ */
 function Hero() {
   return (
-    <section id="top" className="relative min-h-[100svh] flex items-end overflow-hidden">
+    <section id="top" className="relative min-h-[100svh] flex items-end overflow-hidden" style={{ background: "var(--graphite)" }}>
       <img
         src={heroKitchen}
         alt="Cozinha planejada Vetta Design em verde oliva com ilha de mármore em Joinville"
         width={1920}
         height={1280}
         fetchPriority="high"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover opacity-70"
       />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, color-mix(in oklab, var(--graphite) 55%, transparent) 0%, color-mix(in oklab, var(--graphite) 30%, transparent) 40%, color-mix(in oklab, var(--graphite) 88%, transparent) 100%)",
+            "linear-gradient(180deg, color-mix(in oklab, var(--graphite) 60%, transparent) 0%, color-mix(in oklab, var(--graphite) 40%, transparent) 40%, color-mix(in oklab, var(--graphite) 95%, transparent) 100%)",
         }}
       />
       <div className="relative container-x pb-16 md:pb-24 pt-32 md:pt-40 w-full">
@@ -284,35 +287,47 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-3xl"
+          className="max-w-4xl"
         >
-          <span className="eyebrow" style={{ color: "color-mix(in oklab, var(--beige) 90%, transparent)" }}>
-            Marcenaria de alto padrão · Joinville / SC
+          <span
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-sm"
+            style={{
+              background: "color-mix(in oklab, var(--beige) 12%, transparent)",
+              border: "1px solid color-mix(in oklab, var(--beige) 25%, transparent)",
+              color: "var(--beige)",
+              backdropFilter: "blur(6px)",
+            }}
+          >
+            <Sparkles className="w-3.5 h-3.5" style={{ color: "var(--terracotta)" }} />
+            Móveis planejados de alto padrão em Joinville e região
           </span>
           <h1
-            className="mt-5 text-4xl sm:text-5xl md:text-7xl font-normal leading-[1.05]"
-            style={{ color: "var(--cream)" }}
+            className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.05]"
+            style={{ color: "var(--beige)" }}
           >
-            Móveis Planejados Sob Medida para Transformar seu Ambiente
+            Cada detalhe da sua casa conta uma história.
+            <span style={{ color: "var(--terracotta)", fontStyle: "italic" }}> Vamos criar a sua?</span>
           </h1>
           <p
             className="mt-6 text-base md:text-lg max-w-2xl leading-relaxed"
-            style={{ color: "color-mix(in oklab, var(--cream) 85%, transparent)" }}
+            style={{ color: "color-mix(in oklab, var(--beige) 88%, transparent)" }}
           >
-            Criamos móveis planejados que unem design, funcionalidade e acabamento de alto padrão para valorizar sua casa e tornar cada ambiente único.
+            Criamos móveis planejados sob medida que unem design, funcionalidade e acabamento de alto padrão
+            para transformar cada ambiente em um espaço único, pensado para o seu estilo de vida.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-whatsapp">
+          <div className="mt-9 flex flex-col sm:flex-row gap-3">
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-terracotta btn-lg group">
               <MessageCircle className="w-5 h-5" /> Solicitar orçamento pelo WhatsApp
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#projetos" className="btn-ghost">
-              Conheça nossos projetos <ArrowRight className="w-4 h-4" />
+            <a href="#ambientes" className="btn-ghost">
+              Conheça nossos ambientes
             </a>
           </div>
 
           <div
-            className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm"
-            style={{ color: "color-mix(in oklab, var(--cream) 88%, transparent)" }}
+            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm"
+            style={{ color: "color-mix(in oklab, var(--beige) 90%, transparent)" }}
           >
             <div className="flex items-center gap-2">
               <div className="flex" aria-label="5 estrelas no Google">
@@ -320,11 +335,16 @@ function Hero() {
                   <Star key={i} className="w-4 h-4 fill-current" style={{ color: "#F5B301" }} />
                 ))}
               </div>
-              <span className="font-medium">5,0 no Google</span>
-              <span style={{ color: "color-mix(in oklab, var(--cream) 60%, transparent)" }}>· 11 avaliações</span>
+              <span className="font-medium">Nota 5,0 no Google</span>
             </div>
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4" /> Atendimento em Joinville e região
+              <ShieldCheck className="w-4 h-4" style={{ color: "var(--olive)" }} /> Garantia de 4 anos
+            </div>
+            <div className="flex items-center gap-2">
+              <Ruler className="w-4 h-4" style={{ color: "var(--olive)" }} /> Projeto 100% personalizado
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4" /> Joinville e região
             </div>
           </div>
         </motion.div>
@@ -333,176 +353,40 @@ function Hero() {
   );
 }
 
-function Section({
-  id,
-  eyebrow,
-  title,
-  children,
-  className = "",
-  bg,
-}: {
-  id?: string;
-  eyebrow?: string;
-  title?: string;
-  children: React.ReactNode;
-  className?: string;
-  bg?: string;
-}) {
+/* ============ HIGHLIGHTS (2nd fold) ============ */
+function Highlights() {
   return (
-    <section id={id} className={`py-20 md:py-32 ${className}`} style={bg ? { background: bg } : undefined}>
-      <div className="container-x">
-        {(eyebrow || title) && (
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="max-w-3xl mb-12 md:mb-16"
-          >
-            {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-            {title && (
-              <h2 className="mt-4 text-3xl md:text-5xl leading-[1.1] font-normal">{title}</h2>
-            )}
-          </motion.div>
-        )}
-        {children}
-      </div>
-    </section>
-  );
-}
-
-function About() {
-  return (
-    <Section
-      id="sobre"
-      eyebrow="Sobre a Vetta Design"
-      title="Uma marcenaria que transforma ideias em ambientes exclusivos."
-    >
-      <div className="grid md:grid-cols-5 gap-10 md:gap-16">
-        <div className="md:col-span-3 space-y-5 text-[15px] md:text-base leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
-          <p>
-            A Vetta Design nasceu da paixão pela marcenaria e do propósito de transformar ambientes em espaços únicos, funcionais e feitos para durar. Acreditamos que cada projeto deve refletir o estilo, as necessidades e a personalidade de quem vai viver aquele ambiente.
-          </p>
-          <p>
-            Por isso, desenvolvemos <strong style={{ color: "var(--graphite)" }}>móveis planejados sob medida</strong> com atenção a cada detalhe, unindo design, funcionalidade e acabamento de alto padrão. Desde o primeiro atendimento até a instalação, prezamos pela transparência, pelo compromisso com os prazos e por um relacionamento próximo com cada cliente.
-          </p>
-          <p>
-            Mais do que fabricar móveis, realizamos projetos que valorizam os ambientes e proporcionam conforto, organização e satisfação para toda a família. Na Vetta Design, transformar ideias em realidade é o que nos inspira todos os dias.
-          </p>
-        </div>
-        <div className="md:col-span-2 grid grid-cols-2 gap-4">
-          {[
-            { n: "+50", l: "Projetos entregues" },
-            { n: "4 anos", l: "Garantia total" },
-            { n: "5,0★", l: "Nota no Google" },
-            { n: "100%", l: "Sob medida" },
-          ].map((s) => (
-            <div
-              key={s.l}
-              className="rounded-2xl p-6 flex flex-col justify-between min-h-32"
-              style={{ background: "var(--cream)", border: "1px solid var(--border)" }}
-            >
-              <div className="text-3xl md:text-4xl font-display" style={{ color: "var(--olive-deep)", fontFamily: "var(--font-display)" }}>
-                {s.n}
-              </div>
-              <div className="text-xs uppercase tracking-widest mt-3" style={{ color: "var(--muted-foreground)" }}>
-                {s.l}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-function Services() {
-  return (
-    <Section
-      id="servicos"
-      eyebrow="Serviços"
-      title="Ambientes projetados com propósito e requinte"
-      bg="linear-gradient(180deg, var(--cream) 0%, var(--background) 100%)"
-    >
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-        {services.map((s, i) => (
-          <motion.article
-            key={s.title}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, delay: i * 0.05 }}
-            className="card-elegant group flex flex-col"
-          >
-            <div
-              className="w-12 h-12 rounded-full flex items-center justify-center mb-6"
-              style={{ background: "color-mix(in oklab, var(--olive) 15%, transparent)", color: "var(--olive-deep)" }}
-            >
-              <s.icon className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-            <h3 className="text-xl mb-2">{s.title}</h3>
-            <p className="text-sm leading-relaxed mb-6 flex-1" style={{ color: "var(--muted-foreground)" }}>
-              {s.desc}
-            </p>
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-1.5 text-sm font-medium transition-all"
-              style={{ color: "var(--olive-deep)" }}
-            >
-              Saiba mais
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </motion.article>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function Differentials() {
-  return (
-    <section
-      className="py-20 md:py-32"
-      style={{ background: "var(--graphite)", color: "var(--cream)" }}
-    >
+    <section className="section-beige">
       <div className="container-x">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="max-w-3xl mb-14"
+          className="max-w-3xl mb-12 md:mb-16"
         >
-          <span className="eyebrow" style={{ color: "color-mix(in oklab, var(--beige) 90%, transparent)" }}>
-            Diferenciais
-          </span>
-          <h2 className="mt-4 text-3xl md:text-5xl leading-[1.1] font-normal" style={{ color: "var(--cream)" }}>
-            Por que escolher a Vetta Design
+          <span className="eyebrow">Vetta Design</span>
+          <h2 className="mt-4 text-3xl md:text-5xl leading-[1.1] font-normal" style={{ color: "var(--graphite)" }}>
+            Ambientes planejados com <em style={{ fontStyle: "italic", color: "var(--terracotta)" }}>propósito</em>, beleza e funcionalidade.
           </h2>
         </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {differentials.map((d, i) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {highlights.map((h, i) => (
             <motion.div
-              key={d.title}
+              key={h.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.04 }}
-              className="p-6 rounded-2xl transition-colors"
-              style={{
-                background: "color-mix(in oklab, var(--cream) 4%, transparent)",
-                border: "1px solid color-mix(in oklab, var(--cream) 10%, transparent)",
-              }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="highlight-card"
             >
-              <div
-                className="w-11 h-11 rounded-full flex items-center justify-center mb-4"
-                style={{ background: "color-mix(in oklab, var(--olive) 30%, transparent)", color: "var(--cream)" }}
-              >
-                <d.icon className="w-5 h-5" strokeWidth={1.5} />
+              <div className="highlight-icon">
+                <h.icon className="w-6 h-6" strokeWidth={1.6} />
               </div>
-              <h3 className="text-lg" style={{ color: "var(--cream)" }}>{d.title}</h3>
+              <h3 className="text-lg md:text-xl mt-5" style={{ color: "var(--graphite)" }}>{h.title}</h3>
+              <p className="text-sm mt-2 leading-relaxed" style={{ color: "color-mix(in oklab, var(--graphite) 70%, transparent)" }}>
+                {h.desc}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -511,189 +395,363 @@ function Differentials() {
   );
 }
 
+/* ============ ENVIRONMENTS ============ */
+function Environments() {
+  return (
+    <section id="ambientes" className="section-graphite">
+      <div className="container-x">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mb-12 md:mb-16"
+        >
+          <span className="eyebrow" style={{ color: "var(--terracotta)" }}>Ambientes</span>
+          <h2 className="mt-4 text-3xl md:text-5xl leading-[1.1] font-normal" style={{ color: "var(--beige)" }}>
+            Cada ambiente, uma história única.
+          </h2>
+          <p className="mt-4 text-base md:text-lg" style={{ color: "color-mix(in oklab, var(--beige) 78%, transparent)" }}>
+            Projetos exclusivos para cada canto da sua casa — desenvolvidos com material premium e acabamento impecável.
+          </p>
+        </motion.div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
+          {environments.map((p, i) => (
+            <motion.article
+              key={p.title + i}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, delay: (i % 6) * 0.06 }}
+              className="env-card group"
+            >
+              <div className="env-media">
+                <img
+                  src={p.img}
+                  alt={`${p.title} sob medida Vetta Design Joinville`}
+                  loading="lazy"
+                  width={1200}
+                  height={900}
+                  className="w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
+                />
+              </div>
+              <div className="env-body">
+                <h3 className="text-xl md:text-2xl" style={{ color: "var(--graphite)" }}>{p.title}</h3>
+                <p className="text-sm mt-1.5" style={{ color: "color-mix(in oklab, var(--graphite) 65%, transparent)" }}>
+                  {p.desc}
+                </p>
+                <a
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="env-link mt-4"
+                >
+                  Saiba mais
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============ DIFFERENTIALS ============ */
+function Differentials() {
+  return (
+    <section id="diferenciais" className="section-beige">
+      <div className="container-x">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mb-14"
+        >
+          <span className="eyebrow">Diferenciais</span>
+          <h2 className="mt-4 text-3xl md:text-5xl leading-[1.1] font-normal" style={{ color: "var(--graphite)" }}>
+            O que faz a Vetta Design ser <em style={{ fontStyle: "italic", color: "var(--terracotta)" }}>diferente</em>.
+          </h2>
+        </motion.div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {differentials.map((d, i) => (
+            <motion.div
+              key={d.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="diff-card"
+            >
+              <div className="diff-icon">
+                <d.icon className="w-5 h-5" strokeWidth={1.6} />
+              </div>
+              <div>
+                <h3 className="text-lg md:text-xl" style={{ color: "var(--graphite)" }}>{d.title}</h3>
+                <p className="text-sm mt-1.5 leading-relaxed" style={{ color: "color-mix(in oklab, var(--graphite) 70%, transparent)" }}>
+                  {d.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============ PROCESS ============ */
 function Process() {
   return (
-    <Section id="processo" eyebrow="Como trabalhamos" title="Um processo cuidadoso, do primeiro contato à entrega">
-      <div className="relative">
-        <div
-          className="hidden md:block absolute left-0 right-0 top-8 h-px"
-          style={{ background: "linear-gradient(90deg, transparent, var(--border), transparent)" }}
-        />
-        <ol className="grid gap-8 md:grid-cols-4 lg:grid-cols-7">
+    <section id="processo" className="section-graphite">
+      <div className="container-x">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mb-14"
+        >
+          <span className="eyebrow" style={{ color: "var(--terracotta)" }}>Como funciona</span>
+          <h2 className="mt-4 text-3xl md:text-5xl leading-[1.1] font-normal" style={{ color: "var(--beige)" }}>
+            Como transformamos seu projeto em realidade.
+          </h2>
+        </motion.div>
+        <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {process.map((p, i) => (
             <motion.li
               key={p.n}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="relative"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="step-card"
             >
-              <div
-                className="relative z-10 w-16 h-16 rounded-full flex items-center justify-center font-display text-lg"
-                style={{
-                  background: "var(--background)",
-                  border: "1px solid var(--olive)",
-                  color: "var(--olive-deep)",
-                  fontFamily: "var(--font-display)",
-                }}
-              >
-                {p.n}
-              </div>
-              <h3 className="mt-4 text-base">{p.title}</h3>
-              <p className="text-sm mt-1.5 leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+              <div className="step-num">{p.n}</div>
+              <div className="step-icon"><p.icon className="w-5 h-5" strokeWidth={1.6} /></div>
+              <h3 className="mt-5 text-lg md:text-xl" style={{ color: "var(--beige)" }}>{p.title}</h3>
+              <p className="text-sm mt-2 leading-relaxed" style={{ color: "color-mix(in oklab, var(--beige) 72%, transparent)" }}>
                 {p.desc}
               </p>
             </motion.li>
           ))}
         </ol>
       </div>
-    </Section>
+    </section>
   );
 }
 
-function Projects() {
-  const [filter, setFilter] = useState<string>("Todos");
-  const cats = ["Todos", "Cozinhas", "Closets", "Dormitórios", "Home Office", "Lavanderias", "Painéis", "Banheiros"];
-  const filtered = filter === "Todos" ? projects : projects.filter((p) => p.cat === filter);
-  return (
-    <Section
-      id="projetos"
-      eyebrow="Projetos"
-      title="Ambientes que contam histórias"
-      bg="var(--cream)"
-    >
-      <div className="flex flex-wrap gap-2 mb-10">
-        {cats.map((c) => (
-          <button
-            key={c}
-            onClick={() => setFilter(c)}
-            className="px-4 py-2 rounded-full text-sm transition-all"
-            style={{
-              background: filter === c ? "var(--graphite)" : "transparent",
-              color: filter === c ? "var(--cream)" : "var(--graphite)",
-              border: `1px solid ${filter === c ? "var(--graphite)" : "var(--border)"}`,
-            }}
-          >
-            {c}
-          </button>
-        ))}
-      </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-        {filtered.map((p, i) => (
-          <motion.figure
-            key={p.title + i}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6, delay: (i % 6) * 0.05 }}
-            className={`relative overflow-hidden rounded-2xl group cursor-pointer ${
-              i === 0 ? "lg:col-span-2 lg:row-span-2" : ""
-            }`}
-          >
-            <img
-              src={p.img}
-              alt={`${p.title} - ${p.cat} sob medida Vetta Design Joinville`}
-              loading="lazy"
-              width={1200}
-              height={900}
-              className="w-full h-full object-cover aspect-[4/3] transition-transform duration-[900ms] ease-out group-hover:scale-105"
-            />
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6"
-              style={{
-                background:
-                  "linear-gradient(180deg, transparent 40%, color-mix(in oklab, var(--graphite) 90%, transparent) 100%)",
-              }}
-            >
-              <figcaption style={{ color: "var(--cream)" }}>
-                <div className="text-xs uppercase tracking-widest opacity-80">{p.cat}</div>
-                <div className="text-lg mt-1 font-display" style={{ fontFamily: "var(--font-display)" }}>
-                  {p.title}
-                </div>
-              </figcaption>
-            </div>
-          </motion.figure>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
+/* ============ TESTIMONIALS ============ */
 function Testimonials() {
   return (
-    <Section id="depoimentos" eyebrow="Depoimentos" title="O que dizem nossos clientes">
-      <div className="grid md:grid-cols-3 gap-5 md:gap-6 mb-10">
-        <div
-          className="md:col-span-1 rounded-2xl p-8 flex flex-col justify-center"
-          style={{ background: "var(--graphite)", color: "var(--cream)" }}
+    <section id="depoimentos" className="section-beige">
+      <div className="container-x">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mb-12 md:mb-16"
         >
-          <div className="flex" aria-label="5 estrelas">
-            {[0, 1, 2, 3, 4].map((i) => (
-              <Star key={i} className="w-5 h-5 fill-current" style={{ color: "#F5B301" }} />
+          <span className="eyebrow">Depoimentos</span>
+          <h2 className="mt-4 text-3xl md:text-5xl leading-[1.1] font-normal" style={{ color: "var(--graphite)" }}>
+            O que dizem nossos clientes.
+          </h2>
+        </motion.div>
+        <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+          <div className="testimonial-hero">
+            <div className="flex" aria-label="5 estrelas">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <Star key={i} className="w-5 h-5 fill-current" style={{ color: "#F5B301" }} />
+              ))}
+            </div>
+            <div className="text-6xl md:text-7xl mt-4" style={{ fontFamily: "var(--font-display)", color: "var(--beige)" }}>
+              5,0
+            </div>
+            <div className="text-xs mt-2 uppercase tracking-widest" style={{ color: "color-mix(in oklab, var(--beige) 70%, transparent)" }}>
+              11 avaliações verificadas no Google
+            </div>
+            <p className="mt-6 text-sm leading-relaxed" style={{ color: "color-mix(in oklab, var(--beige) 82%, transparent)" }}>
+              Clientes que confiaram na Vetta Design e viram suas casas se transformarem.
+            </p>
+          </div>
+          <div className="md:col-span-2 grid sm:grid-cols-2 gap-4 md:gap-5">
+            {testimonials.slice(0, 4).map((t, i) => (
+              <motion.blockquote
+                key={t.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                className="testimonial-card"
+              >
+                <div className="flex mb-3">
+                  {[0, 1, 2, 3, 4].map((s) => (
+                    <Star key={s} className="w-4 h-4 fill-current" style={{ color: "#F5B301" }} />
+                  ))}
+                </div>
+                <p className="text-sm leading-relaxed flex-1" style={{ color: "var(--graphite)" }}>
+                  "{t.text}"
+                </p>
+                <footer className="mt-4 text-xs uppercase tracking-widest" style={{ color: "color-mix(in oklab, var(--graphite) 60%, transparent)" }}>
+                  — {t.name}
+                </footer>
+              </motion.blockquote>
             ))}
           </div>
-          <div className="text-6xl md:text-7xl mt-4 font-display" style={{ fontFamily: "var(--font-display)", color: "var(--cream)" }}>
-            5,0
-          </div>
-          <div className="text-sm mt-2 uppercase tracking-widest" style={{ color: "color-mix(in oklab, var(--cream) 70%, transparent)" }}>
-            11 avaliações no Google
-          </div>
-          <p className="mt-5 text-sm leading-relaxed" style={{ color: "color-mix(in oklab, var(--cream) 80%, transparent)" }}>
-            Todas as avaliações são verificadas e disponíveis no perfil Google da Vetta Design.
-          </p>
-        </div>
-        <div className="md:col-span-2 grid sm:grid-cols-2 gap-4 md:gap-5">
-          {testimonials.slice(0, 4).map((t, i) => (
-            <motion.blockquote
-              key={t.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="rounded-2xl p-6 flex flex-col"
-              style={{ background: "var(--card)", border: "1px solid var(--border)" }}
-            >
-              <div className="flex mb-3">
-                {[0, 1, 2, 3, 4].map((s) => (
-                  <Star key={s} className="w-4 h-4 fill-current" style={{ color: "#F5B301" }} />
-                ))}
-              </div>
-              <p className="text-sm leading-relaxed flex-1" style={{ color: "var(--foreground)" }}>
-                “{t.text}”
-              </p>
-              <footer className="mt-4 text-xs uppercase tracking-widest" style={{ color: "var(--muted-foreground)" }}>
-                — {t.name}
-              </footer>
-            </motion.blockquote>
-          ))}
         </div>
       </div>
-      <blockquote
-        className="rounded-2xl p-6 md:p-8"
-        style={{ background: "var(--card)", border: "1px solid var(--border)" }}
-      >
-        <div className="flex mb-3">
-          {[0, 1, 2, 3, 4].map((s) => (
-            <Star key={s} className="w-4 h-4 fill-current" style={{ color: "#F5B301" }} />
-          ))}
-        </div>
-        <p className="text-sm md:text-base leading-relaxed">“{testimonials[4].text}”</p>
-        <footer className="mt-4 text-xs uppercase tracking-widest" style={{ color: "var(--muted-foreground)" }}>
-          — {testimonials[4].name}
-        </footer>
-      </blockquote>
-    </Section>
+    </section>
   );
 }
 
-function CTA() {
+/* ============ ABOUT ============ */
+function About() {
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden" style={{ background: "var(--olive-deep)" }}>
+    <section id="sobre" className="section-graphite">
+      <div className="container-x">
+        <div className="grid md:grid-cols-5 gap-10 md:gap-16 items-center">
+          <div className="md:col-span-2">
+            <div className="rounded-3xl overflow-hidden shadow-elegant">
+              <img src={projKitchen2} alt="Marcenaria Vetta Design em Joinville" className="w-full h-full object-cover" loading="lazy" />
+            </div>
+          </div>
+          <div className="md:col-span-3 space-y-5 text-[15px] md:text-base leading-relaxed">
+            <span className="eyebrow" style={{ color: "var(--terracotta)" }}>Sobre a Vetta Design</span>
+            <h2 className="mt-4 text-3xl md:text-5xl font-normal leading-[1.1]" style={{ color: "var(--beige)" }}>
+              Uma marcenaria que transforma ideias em ambientes exclusivos.
+            </h2>
+            <p style={{ color: "color-mix(in oklab, var(--beige) 82%, transparent)" }}>
+              A Vetta Design nasceu da paixão pela marcenaria e do propósito de transformar ambientes em espaços únicos,
+              funcionais e feitos para durar. Cada projeto reflete o estilo, as necessidades e a personalidade de quem vai viver aquele ambiente.
+            </p>
+            <p style={{ color: "color-mix(in oklab, var(--beige) 82%, transparent)" }}>
+              Desenvolvemos móveis planejados sob medida com atenção a cada detalhe, unindo design, funcionalidade e acabamento de alto padrão.
+              Do primeiro atendimento à instalação, prezamos pela transparência e por um relacionamento próximo com cada cliente.
+            </p>
+            <ul className="grid sm:grid-cols-2 gap-3 pt-2">
+              {["Fabricação própria", "Atendimento personalizado", "Materiais premium", "Garantia de 4 anos"].map((v) => (
+                <li key={v} className="flex items-center gap-2 text-sm" style={{ color: "var(--beige)" }}>
+                  <CheckCircle2 className="w-4 h-4" style={{ color: "var(--olive)" }} /> {v}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============ MID CTA ============ */
+function MidCTA({
+  title, desc, button, bg,
+}: { title: string; desc: string; button: string; bg: "graphite" | "beige" }) {
+  const dark = bg === "graphite";
+  return (
+    <section
+      className="py-16 md:py-20"
+      style={{ background: dark ? "var(--graphite)" : "var(--beige)" }}
+    >
+      <div className="container-x">
+        <div
+          className="rounded-3xl px-6 py-10 md:px-14 md:py-14 flex flex-col md:flex-row items-center justify-between gap-6"
+          style={{
+            background: dark ? "color-mix(in oklab, var(--beige) 6%, transparent)" : "color-mix(in oklab, var(--graphite) 5%, transparent)",
+            border: `1px solid ${dark ? "color-mix(in oklab, var(--beige) 15%, transparent)" : "color-mix(in oklab, var(--graphite) 12%, transparent)"}`,
+          }}
+        >
+          <div className="max-w-2xl">
+            <h3
+              className="text-2xl md:text-4xl font-normal leading-tight"
+              style={{ color: dark ? "var(--beige)" : "var(--graphite)" }}
+            >
+              {title}
+            </h3>
+            <p
+              className="mt-3 text-base md:text-lg"
+              style={{ color: dark ? "color-mix(in oklab, var(--beige) 78%, transparent)" : "color-mix(in oklab, var(--graphite) 72%, transparent)" }}
+            >
+              {desc}
+            </p>
+          </div>
+          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-terracotta btn-lg shrink-0">
+            <MessageCircle className="w-5 h-5" /> {button}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============ FAQ ============ */
+function FAQ() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section id="faq" className="section-beige">
+      <div className="container-x">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mb-12"
+        >
+          <span className="eyebrow">Perguntas frequentes</span>
+          <h2 className="mt-4 text-3xl md:text-5xl leading-[1.1] font-normal" style={{ color: "var(--graphite)" }}>
+            Tudo o que você precisa saber.
+          </h2>
+        </motion.div>
+        <div className="max-w-3xl">
+          {faqs.map((f, i) => (
+            <div key={f.q} className="border-b" style={{ borderColor: "color-mix(in oklab, var(--graphite) 15%, transparent)" }}>
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full flex items-center justify-between text-left py-5 md:py-6 gap-4 group"
+              >
+                <h3 className="text-base md:text-lg font-medium transition-colors group-hover:text-[color:var(--terracotta)]"
+                    style={{ fontFamily: "var(--font-sans)", letterSpacing: 0, color: "var(--graphite)" }}>
+                  {f.q}
+                </h3>
+                <span
+                  className="shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-colors"
+                  style={{
+                    background: open === i ? "var(--terracotta)" : "color-mix(in oklab, var(--graphite) 8%, transparent)",
+                    color: open === i ? "var(--beige)" : "var(--graphite)",
+                  }}
+                >
+                  {open === i ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                </span>
+              </button>
+              {open === i && (
+                <motion.p
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  className="pb-6 pr-12 text-sm md:text-base leading-relaxed"
+                  style={{ color: "color-mix(in oklab, var(--graphite) 72%, transparent)" }}
+                >
+                  {f.a}
+                </motion.p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============ FINAL CTA ============ */
+function FinalCTA() {
+  return (
+    <section className="py-20 md:py-32 relative overflow-hidden" style={{ background: "var(--graphite)" }}>
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-40 pointer-events-none"
         style={{
-          background: "radial-gradient(circle at 20% 20%, var(--olive) 0%, transparent 50%), radial-gradient(circle at 80% 80%, var(--terracotta) 0%, transparent 50%)",
+          background:
+            "radial-gradient(circle at 15% 20%, color-mix(in oklab, var(--olive) 60%, transparent) 0%, transparent 55%), radial-gradient(circle at 85% 80%, color-mix(in oklab, var(--terracotta) 55%, transparent) 0%, transparent 55%)",
         }}
       />
       <div className="container-x relative text-center max-w-3xl">
@@ -703,21 +761,20 @@ function CTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <span className="eyebrow" style={{ color: "color-mix(in oklab, var(--cream) 80%, transparent)" }}>
-            Vamos começar?
-          </span>
-          <h2 className="mt-4 text-3xl md:text-5xl font-normal leading-[1.1]" style={{ color: "var(--cream)" }}>
-            Vamos transformar seu ambiente?
+          <span className="eyebrow" style={{ color: "var(--terracotta)" }}>Vamos começar?</span>
+          <h2 className="mt-4 text-3xl md:text-5xl font-normal leading-[1.1]" style={{ color: "var(--beige)" }}>
+            Seu projeto começa com uma <em style={{ fontStyle: "italic", color: "var(--terracotta)" }}>boa conversa</em>.
           </h2>
           <p
             className="mt-5 text-base md:text-lg leading-relaxed"
-            style={{ color: "color-mix(in oklab, var(--cream) 88%, transparent)" }}
+            style={{ color: "color-mix(in oklab, var(--beige) 88%, transparent)" }}
           >
-            Solicite um orçamento sem compromisso e descubra como podemos criar móveis planejados exclusivos para sua casa.
+            Solicite seu orçamento e descubra como podemos transformar sua casa em um espaço único, elegante e feito sob medida para você.
           </p>
-          <div className="mt-8 flex justify-center">
-            <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-whatsapp text-base">
-              <MessageCircle className="w-5 h-5" /> Solicitar orçamento pelo WhatsApp
+          <div className="mt-9 flex justify-center">
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-terracotta btn-lg group">
+              <MessageCircle className="w-5 h-5" /> Solicitar orçamento no WhatsApp
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
         </motion.div>
@@ -726,71 +783,30 @@ function CTA() {
   );
 }
 
-function FAQ() {
-  const [open, setOpen] = useState<number | null>(0);
-  return (
-    <Section id="faq" eyebrow="Perguntas frequentes" title="Tudo o que você precisa saber">
-      <div className="max-w-3xl">
-        {faqs.map((f, i) => (
-          <div
-            key={f.q}
-            className="border-b"
-            style={{ borderColor: "var(--border)" }}
-          >
-            <button
-              onClick={() => setOpen(open === i ? null : i)}
-              className="w-full flex items-center justify-between text-left py-5 md:py-6 gap-4"
-            >
-              <h3 className="text-base md:text-lg font-normal" style={{ fontFamily: "var(--font-sans)", letterSpacing: 0 }}>
-                {f.q}
-              </h3>
-              <span
-                className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
-                style={{ background: "var(--muted)", color: "var(--graphite)" }}
-              >
-                {open === i ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-              </span>
-            </button>
-            {open === i && (
-              <motion.p
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                className="pb-6 pr-12 text-sm md:text-base leading-relaxed"
-                style={{ color: "var(--muted-foreground)" }}
-              >
-                {f.a}
-              </motion.p>
-            )}
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
+/* ============ FOOTER ============ */
 function Footer() {
   return (
-    <footer style={{ background: "var(--graphite)", color: "var(--cream)" }} className="pt-20 pb-8">
+    <footer style={{ background: "var(--graphite)", color: "var(--beige)", borderTop: "1px solid color-mix(in oklab, var(--beige) 12%, transparent)" }} className="pt-20 pb-8">
       <div className="container-x">
         <div className="grid md:grid-cols-4 gap-10 md:gap-8 pb-14">
           <div className="md:col-span-1">
             <img src={logo} alt="Vetta Design" width={140} height={48} className="h-12 w-auto mb-4" />
-            <p className="text-sm leading-relaxed" style={{ color: "color-mix(in oklab, var(--cream) 70%, transparent)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "color-mix(in oklab, var(--beige) 72%, transparent)" }}>
               Marcenaria de alto padrão em Joinville. Móveis planejados sob medida com design, funcionalidade e acabamento premium.
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-widest mb-4" style={{ color: "var(--beige)", fontFamily: "var(--font-sans)" }}>
+            <h4 className="text-sm uppercase tracking-widest mb-4" style={{ color: "var(--terracotta)", fontFamily: "var(--font-sans)" }}>
               Contato
             </h4>
-            <ul className="space-y-3 text-sm" style={{ color: "color-mix(in oklab, var(--cream) 80%, transparent)" }}>
+            <ul className="space-y-3 text-sm" style={{ color: "color-mix(in oklab, var(--beige) 82%, transparent)" }}>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
                 <span>Joinville e região<br />Santa Catarina · Brasil</span>
               </li>
               <li>
-                <a href={WHATSAPP} target="_blank" rel="noopener" className="flex items-center gap-2 hover:underline">
+                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[color:var(--terracotta)] transition-colors">
                   <MessageCircle className="w-4 h-4" /> (47) 98827-1864
                 </a>
               </li>
@@ -798,8 +814,8 @@ function Footer() {
                 <a
                   href="https://www.instagram.com/vet.tadesign"
                   target="_blank"
-                  rel="noopener"
-                  className="flex items-center gap-2 hover:underline"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-[color:var(--terracotta)] transition-colors"
                 >
                   <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> @vet.tadesign
                 </a>
@@ -808,24 +824,24 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-widest mb-4" style={{ color: "var(--beige)", fontFamily: "var(--font-sans)" }}>
+            <h4 className="text-sm uppercase tracking-widest mb-4" style={{ color: "var(--terracotta)", fontFamily: "var(--font-sans)" }}>
               Navegação
             </h4>
-            <ul className="space-y-2.5 text-sm" style={{ color: "color-mix(in oklab, var(--cream) 80%, transparent)" }}>
-              <li><a href="#sobre" className="hover:underline">Sobre</a></li>
-              <li><a href="#servicos" className="hover:underline">Serviços</a></li>
-              <li><a href="#projetos" className="hover:underline">Projetos</a></li>
-              <li><a href="#processo" className="hover:underline">Processo</a></li>
-              <li><a href="#depoimentos" className="hover:underline">Depoimentos</a></li>
-              <li><a href="#faq" className="hover:underline">FAQ</a></li>
+            <ul className="space-y-2.5 text-sm" style={{ color: "color-mix(in oklab, var(--beige) 82%, transparent)" }}>
+              <li><a href="#ambientes" className="hover:text-[color:var(--terracotta)] transition-colors">Ambientes</a></li>
+              <li><a href="#diferenciais" className="hover:text-[color:var(--terracotta)] transition-colors">Diferenciais</a></li>
+              <li><a href="#processo" className="hover:text-[color:var(--terracotta)] transition-colors">Como funciona</a></li>
+              <li><a href="#depoimentos" className="hover:text-[color:var(--terracotta)] transition-colors">Depoimentos</a></li>
+              <li><a href="#sobre" className="hover:text-[color:var(--terracotta)] transition-colors">Sobre</a></li>
+              <li><a href="#faq" className="hover:text-[color:var(--terracotta)] transition-colors">FAQ</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-widest mb-4" style={{ color: "var(--beige)", fontFamily: "var(--font-sans)" }}>
+            <h4 className="text-sm uppercase tracking-widest mb-4" style={{ color: "var(--terracotta)", fontFamily: "var(--font-sans)" }}>
               Localização
             </h4>
-            <div className="rounded-xl overflow-hidden" style={{ border: "1px solid color-mix(in oklab, var(--cream) 15%, transparent)" }}>
+            <div className="rounded-xl overflow-hidden" style={{ border: "1px solid color-mix(in oklab, var(--beige) 15%, transparent)" }}>
               <iframe
                 title="Mapa Joinville - Vetta Design"
                 src="https://www.google.com/maps?q=Joinville,SC&output=embed"
@@ -841,7 +857,7 @@ function Footer() {
 
         <div
           className="pt-8 flex flex-col md:flex-row items-center justify-between gap-3 text-xs"
-          style={{ borderTop: "1px solid color-mix(in oklab, var(--cream) 12%, transparent)", color: "color-mix(in oklab, var(--cream) 60%, transparent)" }}
+          style={{ borderTop: "1px solid color-mix(in oklab, var(--beige) 12%, transparent)", color: "color-mix(in oklab, var(--beige) 60%, transparent)" }}
         >
           <p>© {new Date().getFullYear()} Vetta Design Marcenaria · Todos os direitos reservados</p>
           <p>Móveis planejados de alto padrão · Joinville / SC</p>
@@ -851,14 +867,15 @@ function Footer() {
   );
 }
 
+/* ============ FLOATING WHATSAPP ============ */
 function FloatingWhatsApp() {
   return (
     <a
       href={WHATSAPP}
       target="_blank"
-      rel="noopener"
+      rel="noopener noreferrer"
       aria-label="Falar pelo WhatsApp"
-      className="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110"
+      className="fixed bottom-5 right-5 z-[60] w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110"
       style={{
         background: "var(--whatsapp)",
         color: "white",
