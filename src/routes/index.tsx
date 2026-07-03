@@ -13,7 +13,6 @@ import {
   Sparkles,
   MessageCircle,
   MapPin,
-  Instagram,
   Star,
   ShieldCheck,
   Ruler,
