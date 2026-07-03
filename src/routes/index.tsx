@@ -36,7 +36,8 @@ import projBathroom from "@/assets/project-bathroom.jpg";
 import projKitchen2 from "@/assets/project-kitchen2.jpg";
 
 const WHATSAPP_PHONE = "5547988271864";
-const WHATSAPP_TEXT = "Olá! Gostaria de solicitar um orçamento.";
+const WHATSAPP_TEXT =
+  "Olá! Gostaria de solicitar um orçamento de móveis planejados na Vetta Design.";
 const WHATSAPP = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(WHATSAPP_TEXT)}`;
 
 export const Route = createFileRoute("/")({
@@ -207,9 +208,9 @@ function Navbar() {
         borderBottom: scrolled ? "1px solid color-mix(in oklab, var(--beige) 15%, transparent)" : "1px solid transparent",
       }}
     >
-      <div className="container-x flex items-center justify-between py-3 md:py-4">
-        <a href="#top" className="flex items-center self-center">
-          <img src={logo} alt="Vetta Design Marcenaria" width={240} height={80} className="h-14 md:h-20 w-auto" />
+      <div className="container-x flex items-center justify-between py-4">
+        <a href="#top" className="flex items-center gap-2">
+          <img src={logo} alt="Vetta Design Marcenaria" width={120} height={40} className="h-10 w-auto" />
         </a>
         <nav className="hidden lg:flex items-center gap-8">
           {links.map((l) => (
@@ -304,17 +305,8 @@ function Hero() {
             className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.05]"
             style={{ color: "var(--beige)" }}
           >
-            Cada detalhe da sua casa conta uma história.{" "}
-            <span
-              style={{
-                color: "var(--terracotta)",
-                fontStyle: "italic",
-                textShadow:
-                  "0 0 24px rgba(255,255,255,0.5), 0 0 8px rgba(255,255,255,0.35)",
-              }}
-            >
-              Vamos criar a sua?
-            </span>
+            Cada detalhe da sua casa conta uma história.
+            <span style={{ color: "var(--terracotta)", fontStyle: "italic" }}> Vamos criar a sua?</span>
           </h1>
           <p
             className="mt-6 text-base md:text-lg max-w-2xl leading-relaxed"
