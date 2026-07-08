@@ -306,19 +306,15 @@ function Hero() {
             style={{ color: "var(--beige)" }}
           >
             Cada detalhe da sua casa conta uma história.{" "}
-            <span
-              className="inline-block mt-1 sm:mt-0 px-3 py-1 rounded-xl sm:rounded-2xl"
+            <em
               style={{
                 color: "var(--terracotta)",
                 fontWeight: 500,
-                fontStyle: "italic",
-                background: "color-mix(in oklab, var(--terracotta) 12%, transparent)",
-                border: "1px solid color-mix(in oklab, var(--terracotta) 30%, transparent)",
-                backdropFilter: "blur(4px)",
+                textShadow: "0 0 28px color-mix(in oklab, var(--terracotta) 45%, transparent), 0 0 56px color-mix(in oklab, var(--terracotta) 22%, transparent)",
               }}
             >
               Vamos criar a sua?
-            </span>
+            </em>
           </h1>
           <p
             className="mt-6 text-base md:text-lg max-w-2xl leading-relaxed"
