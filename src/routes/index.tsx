@@ -305,15 +305,22 @@ function Hero() {
             className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.05]"
             style={{ color: "var(--beige)" }}
           >
-            Cada detalhe da sua casa conta uma história.
-            <span style={{ color: "var(--terracotta)", fontStyle: "italic" }}> Vamos criar a sua?</span>
+            Cada detalhe da sua casa conta uma história.{" "}
+            <em
+              style={{
+                color: "var(--terracotta)",
+                fontWeight: 500,
+                textShadow: "0 0 28px color-mix(in oklab, var(--terracotta) 45%, transparent), 0 0 56px color-mix(in oklab, var(--terracotta) 22%, transparent)",
+              }}
+            >
+              Vamos criar a sua?
+            </em>
           </h1>
           <p
             className="mt-6 text-base md:text-lg max-w-2xl leading-relaxed"
             style={{ color: "color-mix(in oklab, var(--beige) 88%, transparent)" }}
           >
-            Criamos móveis planejados sob medida que unem design, funcionalidade e acabamento de alto padrão
-            para transformar cada ambiente em um espaço único, pensado para o seu estilo de vida.
+            Móveis planejados sob medida para transformar sua casa com design, funcionalidade e acabamento de alto padrão.
           </p>
           <div className="mt-9 flex flex-col sm:flex-row gap-3">
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-terracotta btn-lg group">
