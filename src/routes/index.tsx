@@ -307,12 +307,12 @@ function Navbar() {
 function Hero() {
   return (
     <section id="top" className="relative min-h-[100svh] flex items-end overflow-hidden" style={{ background: "var(--graphite)" }}>
-      <img
-        src={heroKitchen}
+      <Picture
+        data={heroKitchen}
         alt="Cozinha planejada Vetta Design em verde oliva com ilha de mármore em Joinville"
-        width={1920}
-        height={1280}
+        loading="eager"
         fetchPriority="high"
+        sizes="100vw"
         className="absolute inset-0 w-full h-full object-cover opacity-70"
       />
       <div
