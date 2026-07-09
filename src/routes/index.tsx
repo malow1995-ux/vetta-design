@@ -473,12 +473,10 @@ function Environments() {
               className="env-card group"
             >
               <div className="env-media">
-                <img
-                  src={p.img}
+                <Picture
+                  data={p.img}
                   alt={`${p.title} sob medida Vetta Design Joinville`}
-                  loading="lazy"
-                  width={1200}
-                  height={900}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
                 />
               </div>
