@@ -7,3 +7,8 @@ declare module "*&as=picture" {
   };
   export default value;
 }
+
+declare module "*&url" {
+  const src: string;
+  export default src;
+}

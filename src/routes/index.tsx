@@ -26,7 +26,9 @@ import {
 } from "lucide-react";
 
 import logo from "@/assets/vetta-logo.png";
-import heroKitchen from "@/assets/hero-kitchen.jpg?w=1600&format=avif;webp;jpg&as=picture";
+import heroKitchen from "@/assets/hero-kitchen.jpg?w=640;1024;1600&format=avif;webp;jpg&quality=62&as=picture";
+import heroKitchenMobilePreload from "@/assets/hero-kitchen.jpg?w=640&format=avif&quality=60&url";
+import heroKitchenDesktopPreload from "@/assets/hero-kitchen.jpg?w=1600&format=avif&quality=62&url";
 import projCloset from "@/assets/project-closet.jpg?w=800&format=avif;webp;jpg&as=picture";
 import projBedroom from "@/assets/project-bedroom.jpg?w=800&format=avif;webp;jpg&as=picture";
 import projOffice from "@/assets/project-office.jpg?w=800&format=avif;webp;jpg&as=picture";
@@ -87,11 +89,18 @@ export const Route = createFileRoute("/")({
       {
         rel: "preload",
         as: "image",
-        href: heroKitchen.img.src,
-        imageSrcSet: heroKitchen.sources.avif,
-        imageSizes: "100vw",
+        href: heroKitchenMobilePreload,
         type: "image/avif",
         fetchpriority: "high",
+        media: "(max-width: 767px)",
+      } as unknown as Record<string, string>,
+      {
+        rel: "preload",
+        as: "image",
+        href: heroKitchenDesktopPreload,
+        type: "image/avif",
+        fetchpriority: "high",
+        media: "(min-width: 768px)",
       } as unknown as Record<string, string>,
     ],
     scripts: [
@@ -334,12 +343,7 @@ function Hero() {
         }}
       />
       <div className="relative container-x pb-16 md:pb-24 pt-32 md:pt-40 w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-4xl"
-        >
+        <div className="max-w-4xl animate-float-in">
           <span
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-sm"
             style={{
@@ -405,7 +409,7 @@ function Hero() {
               <MapPin className="w-4 h-4" /> Joinville e região
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
