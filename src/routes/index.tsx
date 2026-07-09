@@ -83,6 +83,17 @@ const WHATSAPP = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(WHAT
 export const Route = createFileRoute("/")({
   component: Landing,
   head: () => ({
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: heroKitchen.img.src,
+        imageSrcSet: heroKitchen.sources.avif,
+        imageSizes: "100vw",
+        type: "image/avif",
+        fetchpriority: "high",
+      } as unknown as Record<string, string>,
+    ],
     scripts: [
       {
         type: "application/ld+json",
