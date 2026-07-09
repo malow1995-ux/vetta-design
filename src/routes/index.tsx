@@ -343,12 +343,7 @@ function Hero() {
         }}
       />
       <div className="relative container-x pb-16 md:pb-24 pt-32 md:pt-40 w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-4xl"
-        >
+        <div className="max-w-4xl animate-float-in">
           <span
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-sm"
             style={{
