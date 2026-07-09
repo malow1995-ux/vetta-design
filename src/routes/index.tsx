@@ -660,7 +660,7 @@ function About() {
         <div className="grid md:grid-cols-5 gap-10 md:gap-16 items-center">
           <div className="md:col-span-2">
             <div className="rounded-3xl overflow-hidden shadow-elegant">
-              <img src={projKitchen2} alt="Marcenaria Vetta Design em Joinville" className="w-full h-full object-cover" loading="lazy" />
+              <Picture data={projKitchen2Hero} alt="Marcenaria Vetta Design em Joinville" sizes="(min-width: 768px) 40vw, 100vw" className="w-full h-full object-cover" />
             </div>
           </div>
           <div className="md:col-span-3 space-y-5 text-[15px] md:text-base leading-relaxed">
