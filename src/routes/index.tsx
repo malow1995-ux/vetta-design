@@ -57,7 +57,7 @@ function Picture({
   sizes?: string;
 }) {
   return (
-    <picture>
+    <picture style={{ display: "contents" }}>
       {Object.entries(data.sources).map(([type, srcset]) => (
         <source key={type} type={`image/${type === "jpg" ? "jpeg" : type}`} srcSet={srcset} sizes={sizes} />
       ))}
