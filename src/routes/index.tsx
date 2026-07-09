@@ -409,7 +409,7 @@ function Hero() {
               <MapPin className="w-4 h-4" /> Joinville e região
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
