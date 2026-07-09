@@ -26,7 +26,9 @@ import {
 } from "lucide-react";
 
 import logo from "@/assets/vetta-logo.png";
-import heroKitchen from "@/assets/hero-kitchen.jpg?w=1600&format=avif;webp;jpg&as=picture";
+import heroKitchen from "@/assets/hero-kitchen.jpg?w=640;1024;1600&format=avif;webp;jpg&quality=62&as=picture";
+import heroKitchenMobilePreload from "@/assets/hero-kitchen.jpg?w=640&format=avif&quality=60&url";
+import heroKitchenDesktopPreload from "@/assets/hero-kitchen.jpg?w=1600&format=avif&quality=62&url";
 import projCloset from "@/assets/project-closet.jpg?w=800&format=avif;webp;jpg&as=picture";
 import projBedroom from "@/assets/project-bedroom.jpg?w=800&format=avif;webp;jpg&as=picture";
 import projOffice from "@/assets/project-office.jpg?w=800&format=avif;webp;jpg&as=picture";
