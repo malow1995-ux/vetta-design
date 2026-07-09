@@ -89,11 +89,18 @@ export const Route = createFileRoute("/")({
       {
         rel: "preload",
         as: "image",
-        href: heroKitchen.img.src,
-        imageSrcSet: heroKitchen.sources.avif,
-        imageSizes: "100vw",
+        href: heroKitchenMobilePreload,
         type: "image/avif",
         fetchpriority: "high",
+        media: "(max-width: 767px)",
+      } as unknown as Record<string, string>,
+      {
+        rel: "preload",
+        as: "image",
+        href: heroKitchenDesktopPreload,
+        type: "image/avif",
+        fetchpriority: "high",
+        media: "(min-width: 768px)",
       } as unknown as Record<string, string>,
     ],
     scripts: [
