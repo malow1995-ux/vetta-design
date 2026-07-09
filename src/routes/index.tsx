@@ -26,14 +26,54 @@ import {
 } from "lucide-react";
 
 import logo from "@/assets/vetta-logo.png";
-import heroKitchen from "@/assets/hero-kitchen.jpg";
-import projCloset from "@/assets/project-closet.jpg";
-import projBedroom from "@/assets/project-bedroom.jpg";
-import projOffice from "@/assets/project-office.jpg";
-import projTv from "@/assets/project-tv.jpg";
-import projLaundry from "@/assets/project-laundry.jpg";
-import projBathroom from "@/assets/project-bathroom.jpg";
-import projKitchen2 from "@/assets/project-kitchen2.jpg";
+import heroKitchen from "@/assets/hero-kitchen.jpg?w=1600&format=avif;webp;jpg&as=picture";
+import projCloset from "@/assets/project-closet.jpg?w=800&format=avif;webp;jpg&as=picture";
+import projBedroom from "@/assets/project-bedroom.jpg?w=800&format=avif;webp;jpg&as=picture";
+import projOffice from "@/assets/project-office.jpg?w=800&format=avif;webp;jpg&as=picture";
+import projTv from "@/assets/project-tv.jpg?w=800&format=avif;webp;jpg&as=picture";
+import projLaundry from "@/assets/project-laundry.jpg?w=800&format=avif;webp;jpg&as=picture";
+import projBathroom from "@/assets/project-bathroom.jpg?w=800&format=avif;webp;jpg&as=picture";
+import projKitchen2 from "@/assets/project-kitchen2.jpg?w=800&format=avif;webp;jpg&as=picture";
+import projKitchen2Hero from "@/assets/project-kitchen2.jpg?w=1200&format=avif;webp;jpg&as=picture";
+
+type PictureData = {
+  sources: Record<string, string>;
+  img: { src: string; w: number; h: number };
+};
+
+function Picture({
+  data,
+  alt,
+  className,
+  loading = "lazy",
+  fetchPriority,
+  sizes,
+}: {
+  data: PictureData;
+  alt: string;
+  className?: string;
+  loading?: "lazy" | "eager";
+  fetchPriority?: "high" | "low" | "auto";
+  sizes?: string;
+}) {
+  return (
+    <picture>
+      {Object.entries(data.sources).map(([type, srcset]) => (
+        <source key={type} type={`image/${type === "jpg" ? "jpeg" : type}`} srcSet={srcset} sizes={sizes} />
+      ))}
+      <img
+        src={data.img.src}
+        width={data.img.w}
+        height={data.img.h}
+        alt={alt}
+        loading={loading}
+        decoding="async"
+        fetchPriority={fetchPriority}
+        className={className}
+      />
+    </picture>
+  );
+}
 
 const WHATSAPP_PHONE = "5547988271864";
 const WHATSAPP_TEXT =
