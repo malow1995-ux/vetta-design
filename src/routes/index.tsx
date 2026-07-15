@@ -268,10 +268,11 @@ function Navbar() {
         borderBottom: scrolled ? "1px solid color-mix(in oklab, var(--beige) 15%, transparent)" : "1px solid transparent",
       }}
     >
-      <div className="container-x flex items-center justify-between py-4">
+      <div className="container-x flex items-center justify-between py-3">
         <a href="#top" className="flex items-center gap-2">
-          <img src={logo} alt="Vetta Design Marcenaria" width={120} height={40} className="h-10 w-auto" />
+          <img src={logo} alt="Vetta Design Marcenaria" width={200} height={64} className="h-14 md:h-16 w-auto" />
         </a>
+
         <nav className="hidden lg:flex items-center gap-8">
           {links.map((l) => (
             <a
