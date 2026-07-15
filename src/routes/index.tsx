@@ -270,7 +270,7 @@ function Navbar() {
     >
       <div className="container-x flex items-center justify-between py-3">
         <a href="#top" className="flex items-center gap-2">
-          <img src={logo} alt="Vetta Design Marcenaria" width={484} height={175} className="h-20 md:h-24 w-auto" />
+          <img src={logo} alt="Vetta Design Marcenaria" width={500} height={500} className="h-16 md:h-20 w-auto" />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
