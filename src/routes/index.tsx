@@ -262,10 +262,7 @@ function Navbar() {
     <header
       className="fixed top-0 inset-x-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled
-          ? "color-mix(in oklab, var(--graphite) 96%, transparent)"
-          : "color-mix(in oklab, var(--graphite) 70%, transparent)",
-        backdropFilter: "blur(14px)",
+        backgroundColor: "rgb(59, 59, 59)",
         borderBottom: scrolled ? "1px solid color-mix(in oklab, var(--beige) 15%, transparent)" : "1px solid transparent",
       }}
     >
