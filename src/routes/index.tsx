@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 
 import logoAsset from "@/assets/vetta-logo.png.asset.json";
-const logo = logoAsset.url;
+const logo = `https://vetta-design.lovable.app${logoAsset.url}`;
 import heroKitchen from "@/assets/hero-kitchen.jpg?w=640;1024;1600&format=avif;webp;jpg&quality=62&as=picture";
 import heroKitchenMobilePreload from "@/assets/hero-kitchen.jpg?w=640&format=avif&quality=60&url";
 import heroKitchenDesktopPreload from "@/assets/hero-kitchen.jpg?w=1600&format=avif&quality=62&url";
@@ -142,7 +142,7 @@ export const Route = createFileRoute("/")({
           "@type": "Organization",
           name: "Vetta Design",
           url: "https://vettadesign.com.br",
-          logo: "https://vettadesign.com.br/logo.png",
+          logo,
           contactPoint: {
             "@type": "ContactPoint",
             telephone: "+55 47 98827-1864",
