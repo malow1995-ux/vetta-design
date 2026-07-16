@@ -25,7 +25,8 @@ import {
   Truck,
 } from "lucide-react";
 
-import logo from "@/assets/vetta-logo.png";
+import logoAsset from "@/assets/vetta-logo.png.asset.json";
+const logo = logoAsset.url;
 import heroKitchen from "@/assets/hero-kitchen.jpg?w=640;1024;1600&format=avif;webp;jpg&quality=62&as=picture";
 import heroKitchenMobilePreload from "@/assets/hero-kitchen.jpg?w=640&format=avif&quality=60&url";
 import heroKitchenDesktopPreload from "@/assets/hero-kitchen.jpg?w=1600&format=avif&quality=62&url";
@@ -261,16 +262,13 @@ function Navbar() {
     <header
       className="fixed top-0 inset-x-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled
-          ? "color-mix(in oklab, var(--graphite) 96%, transparent)"
-          : "color-mix(in oklab, var(--graphite) 70%, transparent)",
-        backdropFilter: "blur(14px)",
+        backgroundColor: "rgb(59, 59, 59)",
         borderBottom: scrolled ? "1px solid color-mix(in oklab, var(--beige) 15%, transparent)" : "1px solid transparent",
       }}
     >
       <div className="container-x flex items-center justify-between py-3">
         <a href="#top" className="flex items-center gap-2">
-          <img src={logo} alt="Vetta Design Marcenaria" width={500} height={500} className="h-16 md:h-20 w-auto" />
+          <img src={logo} alt="Vetta Design Marcenaria" width={1044} height={577} className="h-20 md:h-28 w-auto" />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
