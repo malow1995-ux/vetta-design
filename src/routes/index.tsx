@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -915,11 +915,46 @@ function Footer() {
         </div>
 
         <div
-          className="pt-8 flex flex-col md:flex-row items-center justify-between gap-3 text-xs"
-          style={{ borderTop: "1px solid color-mix(in oklab, var(--beige) 12%, transparent)", color: "color-mix(in oklab, var(--beige) 60%, transparent)" }}
+          className="pt-8 flex flex-col gap-6"
+          style={{ borderTop: "1px solid color-mix(in oklab, var(--beige) 12%, transparent)", color: "color-mix(in oklab, var(--beige) 70%, transparent)" }}
         >
-          <p>© {new Date().getFullYear()} Vetta Design Marcenaria · Todos os direitos reservados</p>
-          <p>Móveis planejados de alto padrão · Joinville / SC</p>
+          <nav className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2 text-sm">
+            <Link to="/politica-de-privacidade" className="hover:text-[color:var(--terracotta)] transition-colors">
+              Política de Privacidade
+            </Link>
+            <span aria-hidden="true" style={{ color: "color-mix(in oklab, var(--beige) 25%, transparent)" }}>·</span>
+            <Link to="/termos-de-uso" className="hover:text-[color:var(--terracotta)] transition-colors">
+              Termos de Uso
+            </Link>
+            <span aria-hidden="true" style={{ color: "color-mix(in oklab, var(--beige) 25%, transparent)" }}>·</span>
+            <Link to="/politica-de-cookies" className="hover:text-[color:var(--terracotta)] transition-colors">
+              Política de Cookies
+            </Link>
+          </nav>
+
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs" style={{ color: "color-mix(in oklab, var(--beige) 60%, transparent)" }}>
+            <p>© 2026 Vetta Design. Todos os direitos reservados.</p>
+            <p>Móveis planejados de alto padrão · Joinville / SC</p>
+          </div>
+
+          <div
+            className="pt-6 text-center text-xs"
+            style={{
+              borderTop: "1px solid color-mix(in oklab, var(--beige) 10%, transparent)",
+              color: "color-mix(in oklab, var(--beige) 55%, transparent)",
+            }}
+          >
+            Desenvolvido por{" "}
+            <a
+              href="https://posicionafacil.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[color:var(--terracotta)] transition-colors"
+              style={{ color: "var(--terracotta)" }}
+            >
+              Posiciona Fácil
+            </a>
+          </div>
         </div>
       </div>
     </footer>
